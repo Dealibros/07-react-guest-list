@@ -126,7 +126,17 @@ const itemVisibility = css`
 
 function App() {
   // Define the guestList array
+
   const [list, setList] = useState();
+
+  // Guest List input fields
+  const [fName, setFname] = useState('');
+  const [lName, setLname] = useState('');
+  const [checkboxes, setCheckboxes] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Object.keys() returns an array of strings which are values of specific key of the object
+  const checkboxKeys = Object.keys(checkboxes);
 
   // fetch gets API from the server, will rerender nonStop, in this case runs only once because of useEffect
   // From GIT "GET"
@@ -135,24 +145,16 @@ function App() {
       const response = await fetch(`${baseUrl}/`);
       const data = await response.json();
       setList(data);
+      setIsLoading(false);
     };
     getList();
   }, []);
 
-  // Guest List input fields
-  const [fName, setFname] = useState('');
-  const [lName, setLname] = useState('');
-  const [checkboxes, setCheckboxes] = useState({});
-  // Object.keys() returns an array of strings which are values of specific key of the object
-  const checkboxKeys = Object.keys(checkboxes);
-  console.log(list);
-
-  if (!list) {
+  if (isLoading) {
     return (
       <div
         style={{
           familyFont: 'Arial',
-          fontWeight: '700',
           color: 'purple',
           fontSize: '40px',
           textAlign: 'center',
