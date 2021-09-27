@@ -93,6 +93,7 @@ const buttonDelete = css`
   letter-spacing: 1px;
   font-size: 14px;
   margin-left: 0.5rem;
+  margin-bottom: 2rem;
   padding: 15px 20px;
   display: inline-block;
   border: none;
