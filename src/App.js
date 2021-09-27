@@ -22,7 +22,7 @@ const headerStyle = css`
 
 const mainStyle = css`
   width: auto;
-  min-height: 85vh;
+  min-height: 90vh;
   justify-content: center;
   font-size: calc(6px + 2vmin);
   color: white;
@@ -33,9 +33,10 @@ const mainStyle = css`
 
 const inputTheGuest = css`
   line-height: 35px;
-  width: 17%;
+  width: 13%;
   margin-bottom: 15px;
   margin-right: 0.2rem;
+  margin-top: 0.4rem;
   text-align: center;
   border-radius: 0.8rem;
 `;
@@ -54,14 +55,19 @@ const guestsToInvite = css`
   padding: 5px 50px;
 `;
 
+const guestsToInvitepar = css`
+  margin-bottom: 1rem;
+`;
+
 const button = css`
   color: #fff !important;
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
   letter-spacing: 1px;
-  font-size: 17px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-right: 0.5rem;
   padding: 15px 20px;
   border: none;
   border-radius: 15px;
@@ -85,8 +91,8 @@ const buttonDelete = css`
   font-weight: bold;
   text-decoration: none;
   letter-spacing: 1px;
-  font-size: 17px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-left: 0.5rem;
   padding: 15px 20px;
   display: inline-block;
   border: none;
@@ -106,13 +112,13 @@ const buttonDelete = css`
 `;
 
 const table = css`
-  min-width: 50%;
+  min-width: 30%;
   margin-left: auto;
   margin-right: auto;
   text-align: center !important;
   line-height: 30px;
   border-spacing: 15px 5px;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   background-color: rgb(248, 245, 245);
   padding: 30px;
   border-radius: 1rem;
@@ -237,17 +243,21 @@ function App() {
       </header>
       <section css={mainStyle}>
         <div css={guestsToInvite}>
-          <h2>Guests to invite:</h2>
+          <h2 css={guestsToInvitepar}>Guests to invite:</h2>
 
           {/* Guests First and Last Name Input */}
           <form onSubmit={handleSubmit}>
+            <span>Name</span>
+            <br />
             <input
               css={inputTheGuest}
               placeholder="First name"
               id="firstName"
               onChange={(e) => setFname(e.target.value)}
             />
-
+            <br />
+            <span>Family Name</span>
+            <br />
             <input
               css={inputTheGuest}
               placeholder="Last name"
@@ -291,10 +301,8 @@ function App() {
           </table>
 
           <button css={button} type="button" onClick={(e) => handleEdit(e)}>
-            Confirm attendance
+            Attending Guest
           </button>
-
-          <br />
 
           <button
             css={buttonDelete}
@@ -302,7 +310,7 @@ function App() {
             onClick={(item) => handleDelete(item.id)}
             id="delete"
           >
-            Delete guest
+            Deleting guest
           </button>
         </div>
       </section>
